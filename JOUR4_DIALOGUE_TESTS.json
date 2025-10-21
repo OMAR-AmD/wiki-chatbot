@@ -1,0 +1,119 @@
+{
+  "dialogues": [
+    {
+      "name": "Dialogue 1: Onboarding Complet",
+      "turns": [
+        {
+          "user": "Hi, I'm new here. How do I get started?",
+          "bot_response": "Based on the provided wiki documentation, to get started you can follow these steps:\n\n1. Authenticat",
+          "latency_ms": 11023.199796676636,
+          "sources": 3,
+          "success": true
+        },
+        {
+          "user": "Okay, and what's required?",
+          "bot_response": "To get started, you will need to authenticate a user using the `/api/login` endpoint. The request sh",
+          "latency_ms": 3666.9692993164062,
+          "sources": 3,
+          "success": true
+        },
+        {
+          "user": "How long does setup usually take?",
+          "bot_response": "The documentation doesn't provide a specific time frame for how long the setup process usually takes",
+          "latency_ms": 3170.504093170166,
+          "sources": 3,
+          "success": true
+        },
+        {
+          "user": "What if I run into errors?",
+          "bot_response": "Based on the provided wiki documentation, if you run into errors during the setup process, there are",
+          "latency_ms": 5074.378252029419,
+          "sources": 3,
+          "success": true
+        }
+      ],
+      "avg_latency_ms": 5733.762860298157
+    },
+    {
+      "name": "Dialogue 2: Architecture Questions",
+      "turns": [
+        {
+          "user": "Can you explain the system architecture?",
+          "bot_response": "Sure! Based on the provided wiki documentation, here is an explanation of the system architecture:\n\n",
+          "latency_ms": 5271.48962020874,
+          "sources": 3,
+          "success": true
+        },
+        {
+          "user": "Which components are most critical?",
+          "bot_response": "Based on the provided wiki documentation, the most critical components of the system architecture ar",
+          "latency_ms": 5700.130939483643,
+          "sources": 3,
+          "success": true
+        },
+        {
+          "user": "How do they communicate?",
+          "bot_response": "The components of the system architecture communicate with each other through API calls. The Fronten",
+          "latency_ms": 2527.322292327881,
+          "sources": 3,
+          "success": true
+        },
+        {
+          "user": "What database do we use?",
+          "bot_response": "According to the wiki documentation, the database used by the system is PostgreSQL.",
+          "latency_ms": 829.1029930114746,
+          "sources": 3,
+          "success": true
+        },
+        {
+          "user": "Is it scalable?",
+          "bot_response": "Yes, PostgreSQL is scalable. According to the wiki documentation, PostgreSQL is used as the database",
+          "latency_ms": 2572.917938232422,
+          "sources": 3,
+          "success": true
+        }
+      ],
+      "avg_latency_ms": 3380.192756652832
+    },
+    {
+      "name": "Dialogue 3: Troubleshooting",
+      "turns": [
+        {
+          "user": "I'm getting connection errors",
+          "bot_response": "Based on the provided wiki documentation, the issue you are experiencing with connection errors may ",
+          "latency_ms": 4454.573392868042,
+          "sources": 3,
+          "success": true
+        },
+        {
+          "user": "How do I check the service status?",
+          "bot_response": "To check the service status, you can use the `docker ps` command to list all running Docker containe",
+          "latency_ms": 3702.693462371826,
+          "sources": 3,
+          "success": true
+        },
+        {
+          "user": "What should I look for in logs?",
+          "bot_response": "Based on the provided wiki documentation, you should look for the following information in the logs:",
+          "latency_ms": 7258.6517333984375,
+          "sources": 3,
+          "success": true
+        },
+        {
+          "user": "Is there a diagnostic tool?",
+          "bot_response": "Based on the provided wiki documentation, there is no specific diagnostic tool mentioned for checkin",
+          "latency_ms": 2662.846088409424,
+          "sources": 3,
+          "success": true
+        }
+      ],
+      "avg_latency_ms": 4519.691169261932
+    }
+  ],
+  "summary": {
+    "total_dialogues": 3,
+    "total_turns": 13,
+    "avg_latency_ms": 4454.983069346501,
+    "total_time_seconds": 57.91477990150452
+  }
+}

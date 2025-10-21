@@ -1,0 +1,64 @@
+(venv) (base) PS C:\Users\omara\Desktop\wiki_chatbot_stage> python prepare_data.py
+Processing: api_reference.md
+Processing: architecture.md
+Processing: coding_standards.md
+Processing: database_schema.md
+Processing: deployment_guide.md
+Processing: devops_pipeline.md
+Processing: faq_technique.md
+Processing: guide_deploiement.md
+Processing: infrastructure_cloud.md
+Processing: monitoring.md
+Processing: politiques_securite.md
+Processing: reference_api.md
+Processing: schema_base_donnees.md
+Processing: security_policies.md
+Processing: setup_local.md
+Processing: strategie_tests.md
+Processing: troubleshooting.md
+Processing: user_onboarding.md
+
+✅ Processing complete!
+Total documents: 18
+Total chunks: 18
+Avg chunk size: 49 words
+(venv) (base) PS C:\Users\omara\Desktop\wiki_chatbot_stage> python verify_chunks.py
+============================================================
+CHUNK QUALITY ANALYSIS
+============================================================
+
+Total chunks: 18
+Total words: 898
+Average chunk size: 49 words
+
+Chunks par catégorie:
+  API Documentation: 2
+  Architecture: 1
+  General: 13
+  Setup & Installation: 1
+  Troubleshooting: 1
+
+============================================================
+EXEMPLE DE 3 CHUNKS
+============================================================
+
+Chunk 1:
+Source: api_reference.md
+Title: API Reference
+Category: API Documentation
+Content preview: # API Reference ## Authentication ### POST /api/login Authenticate a user and return a JWT token. **Request:** ```json {"email": "user@example.com", "...
+------------------------------------------------------------
+
+Chunk 2:
+Source: architecture.md
+Title: System Architecture
+Category: Architecture
+Content preview: # System Architecture ## Overview Our system uses a microservices architecture with: - Frontend (React) - Backend API (Python FastAPI) - Database (Pos...
+------------------------------------------------------------
+
+Chunk 3:
+Source: coding_standards.md
+Title: Coding Standards
+Category: General
+Content preview: # Coding Standards ## Python - Follow PEP 8 - Type hints required - Max line length: 88 (Black formatter) Example: ```python def get_user(user_id: int...
+------------------------------------------------------------

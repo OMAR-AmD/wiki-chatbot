@@ -1,0 +1,32 @@
+{
+  "accuracy": 60.0,
+  "correct": 3,
+  "total": 5,
+  "test_cases": [
+    {
+      "query": "How do I setup the project locally?",
+      "expected_source": "setup_local.md",
+      "category": "setup"
+    },
+    {
+      "query": "What is the system architecture?",
+      "expected_source": "architecture.md",
+      "category": "architecture"
+    },
+    {
+      "query": "What database do we use?",
+      "expected_source": "architecture.md",
+      "category": "architecture"
+    },
+    {
+      "query": "How do I fix connection errors?",
+      "expected_source": "troubleshooting.md",
+      "category": "troubleshooting"
+    },
+    {
+      "query": "What are the Python naming conventions?",
+      "expected_source": "coding_standards.md",
+      "category": "standards"
+    }
+  ]
+}

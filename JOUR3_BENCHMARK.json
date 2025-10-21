@@ -1,0 +1,81 @@
+{
+  "basic_avg_ms": 2871.9149112701416,
+  "optimized_avg_ms": 4103.128528594971,
+  "improvement_percent": -42.870825054503754,
+  "detailed_results": {
+    "basic": [
+      {
+        "query": "How to setup the project locally?",
+        "success": true,
+        "time_ms": 3602.5590896606445,
+        "num_sources": 3
+      },
+      {
+        "query": "What is the system architecture?",
+        "success": true,
+        "time_ms": 3143.0938243865967,
+        "num_sources": 3
+      },
+      {
+        "query": "What database do we use?",
+        "success": true,
+        "time_ms": 654.7930240631104,
+        "num_sources": 3
+      },
+      {
+        "query": "How do I debug connection errors?",
+        "success": true,
+        "time_ms": 2072.531223297119,
+        "num_sources": 3
+      },
+      {
+        "query": "What are the Python naming conventions?",
+        "success": true,
+        "time_ms": 4886.597394943237,
+        "num_sources": 3
+      }
+    ],
+    "optimized": [
+      {
+        "query": "How to setup the project locally?",
+        "success": true,
+        "time_ms": 4634.405851364136,
+        "num_sources": 3,
+        "search_ms": 851.2392044067383,
+        "generation_ms": 3783.1642627716064
+      },
+      {
+        "query": "What is the system architecture?",
+        "success": true,
+        "time_ms": 7226.7906665802,
+        "num_sources": 3,
+        "search_ms": 153.21660041809082,
+        "generation_ms": 7073.572635650635
+      },
+      {
+        "query": "What database do we use?",
+        "success": true,
+        "time_ms": 934.6182346343994,
+        "num_sources": 3,
+        "search_ms": 116.64915084838867,
+        "generation_ms": 817.9683685302734
+      },
+      {
+        "query": "How do I debug connection errors?",
+        "success": true,
+        "time_ms": 2061.274766921997,
+        "num_sources": 3,
+        "search_ms": 122.54810333251953,
+        "generation_ms": 1938.7257099151611
+      },
+      {
+        "query": "What are the Python naming conventions?",
+        "success": true,
+        "time_ms": 5658.553123474121,
+        "num_sources": 3,
+        "search_ms": 128.41224670410156,
+        "generation_ms": 5530.140161514282
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "evaluations": [
+    {
+      "query": "How do I setup the project locally?",
+      "scores": {
+        "relevance": 5,
+        "accuracy": 5,
+        "completeness": 5,
+        "clarity": 4,
+        "usefulness": 4
+      },
+      "average_score": 4.6
+    },
+    {
+      "query": "What is the system architecture?",
+      "scores": {
+        "relevance": 5,
+        "accuracy": 5,
+        "completeness": 4,
+        "clarity": 5,
+        "usefulness": 5
+      },
+      "average_score": 4.8
+    },
+    {
+      "query": "How do I debug connection errors?",
+      "scores": {
+        "relevance": 1,
+        "accuracy": 2,
+        "completeness": 1,
+        "clarity": 1,
+        "usefulness": 1
+      },
+      "average_score": 1.2
+    },
+    {
+      "query": "What database do we use?",
+      "scores": {
+        "relevance": 3,
+        "accuracy": 3,
+        "completeness": 2,
+        "clarity": 2,
+        "usefulness": 2
+      },
+      "average_score": 2.4
+    },
+    {
+      "query": "What are the coding standards?",
+      "scores": {
+        "relevance": 3,
+        "accuracy": 3,
+        "completeness": 3,
+        "clarity": 3,
+        "usefulness": 4
+      },
+      "average_score": 3.2
+    }
+  ],
+  "overall_score": 3.2399999999999998
+}

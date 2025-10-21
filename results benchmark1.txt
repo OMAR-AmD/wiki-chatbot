@@ -1,0 +1,50 @@
+==================================================
+Testing llama2
+==================================================
+
+Question: Comment installer les dépendances du projet?
+Latency: 10.68s
+Answer:
+Voici quelques méthodes courantes pour installer les dépendances d'un projet :
+
+1. Utiliser un gest...
+
+Question: Qu'est-ce que l'architecture microservices?
+Latency: 8.67s
+Answer:
+L'architecture microservices est une approche d'architecture informatique qui consiste en un ensemb...
+
+Question: Quel est le port du serveur de production?
+Latency: 13.36s
+Answer:
+Le port du serveur de production dépend du type de serveur et de l'application en utilisations. En ...
+
+==================================================
+Testing mistral
+==================================================
+
+Question: Comment installer les dépendances du projet?
+Latency: 27.43s
+Answer:  Pour répondre à votre question, il est important de préciser que le processus d'installation des dé...
+
+Question: Qu'est-ce que l'architecture microservices?
+Latency: 9.81s
+Answer:  L'architecture Microservices est un modèle de développement qui permet de structurer des applicatio...
+
+Question: Quel est le port du serveur de production?
+Latency: 8.44s
+Answer:  Il n'y a pas de réponse précise à votre question car il s'agit d'une information qui varie en fonct...
+
+==================================================
+RÉSUMÉ BENCHMARK
+==================================================
+
+llama2:
+  Latence moyenne: 10.91s
+  Min: 8.67s
+  Max: 13.36s
+
+mistral:
+  Latence moyenne: 15.23s
+  Min: 8.44s
+  Max: 27.43s
