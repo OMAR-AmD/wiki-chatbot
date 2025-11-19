@@ -1,5 +1,5 @@
 import requests
-from typing import Dict, List
+from typing import Dict, List, Optional # Corrected import
 
 class WikiChatbotAPIClient:
     """Client pour API Wiki Chatbot"""
@@ -7,11 +7,17 @@ class WikiChatbotAPIClient:
     def __init__(self, base_url: str = "http://127.0.0.1:8000"):
         self.base_url = base_url
     
-    def query(self, query: str) -> Dict:
-        """Send query to API"""
+    # Corrected: Added session_id argument and included it in the payload
+    def query(self, query: str, session_id: Optional[str] = None) -> Dict:
+        """Send query to API, optionally including session_id for context"""
+        
+        payload = {"query": query}
+        if session_id:
+            payload["session_id"] = session_id
+            
         response = requests.post(
             f"{self.base_url}/query",
-            json={"query": query}
+            json=payload # Send the payload dictionary
         )
         response.raise_for_status()
         return response.json()
