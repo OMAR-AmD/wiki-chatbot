@@ -3,6 +3,7 @@ from sentence_transformers import SentenceTransformer
 import os
 from typing import List, Dict
 import json
+import time # Added import for time used in add_documents
 
 class RAGPipeline:
     def __init__(self, 
@@ -11,11 +12,6 @@ class RAGPipeline:
                  persist_directory="./chroma_db"):
         """
         Initialise le pipeline RAG
-        
-        Args:
-            collection_name: Nom de la collection Chroma
-            embedding_model: Modèle pour les embeddings
-            persist_directory: Dossier de stockage Chroma
         """
         # Forcer le mode offline pour éviter les appels à HuggingFace
         import os
@@ -40,9 +36,6 @@ class RAGPipeline:
     def add_documents(self, documents: List[Dict]):
         """
         Ajoute des documents à la knowledge base
-        
-        Args:
-            documents: Liste de dicts avec 'content', 'title', 'source'
         """
         if not documents:
             print("⚠️ No documents to add")
@@ -59,7 +52,6 @@ class RAGPipeline:
         ]
         
         # Générer IDs uniques basés sur le timestamp et index
-        import time
         timestamp = int(time.time() * 1000)
         ids = [f"doc_{timestamp}_{i}" for i in range(len(documents))]
         
@@ -87,20 +79,21 @@ class RAGPipeline:
             )
             print(f"✅ Upserted {len(documents)} documents to knowledge base")
     
-    def search(self, query: str, top_k: int = 3) -> List[Dict]:
+    # 🎯 CRITICAL FIX HERE: Change return type from List[Dict] to Dict
+    def search(self, query: str, top_k: int = 3) -> Dict:
         """
-        Recherche les documents pertinents
+        Recherche les documents pertinents et formate le résultat en un dictionnaire RAG
         
-        Args:
-            query: Question de l'utilisateur
-            top_k: Nombre de documents à retourner
-            
         Returns:
-            Liste de documents avec leur score de pertinence
+            Dict: {'context': str, 'sources': List[Dict], 'type': str}
         """
         if self.collection.count() == 0:
             print("⚠️ Knowledge base is empty")
-            return []
+            return {
+                "context": "Knowledge base is empty. Cannot retrieve information.",
+                "sources": [],
+                "type": "no_rag"
+            }
         
         # Générer embedding de la query
         query_embedding = self.embedding_model.encode([query]).tolist()[0]
@@ -111,26 +104,37 @@ class RAGPipeline:
             n_results=top_k
         )
         
-        # Formater les résultats
         documents = []
         if results['documents'] and results['documents'][0]:
             for i in range(len(results['documents'][0])):
+                # 1. Format the list of source documents
                 doc = {
                     'content': results['documents'][0][i],
                     'title': results['metadatas'][0][i].get('title', 'Unknown'),
                     'source': results['metadatas'][0][i].get('source', 'Unknown'),
-                    'score': 1 - results['distances'][0][i]  # Convertir distance en score
+                    'relevance': 1 - results['distances'][0][i]  # Utiliser 'relevance' pour Streamlit
                 }
                 documents.append(doc)
         
-        return documents
+        # 2. Combine all document contents into a single context string
+        context_text = "\n\n---\n\n".join([doc['content'] for doc in documents])
+        
+        # 3. Return the final structured dictionary
+        return {
+            "context": context_text,
+            "sources": [
+                {
+                    "title": doc['title'],
+                    "source": doc['source'],
+                    "relevance": doc['relevance']
+                } for doc in documents
+            ],
+            "type": "hybrid_rag"
+        }
     
     def load_from_directory(self, directory_path: str):
         """
         Charge tous les fichiers .txt d'un dossier
-        
-        Args:
-            directory_path: Chemin du dossier contenant les docs
         """
         if not os.path.exists(directory_path):
             print(f"❌ Directory not found: {directory_path}")
@@ -162,13 +166,6 @@ class RAGPipeline:
     def _chunk_text(self, text: str, max_length: int = 500) -> List[str]:
         """
         Découpe un texte en chunks de taille raisonnable
-        
-        Args:
-            text: Texte à découper
-            max_length: Taille max d'un chunk (en mots)
-            
-        Returns:
-            Liste de chunks
         """
         words = text.split()
         chunks = []
@@ -220,8 +217,7 @@ if __name__ == "__main__":
     print("\n=== Test Search ===")
     results = rag.search("What are the agent tools?", top_k=2)
     
-    for i, doc in enumerate(results):
-        print(f"\n📄 Result {i+1}:")
-        print(f"   Title: {doc['title']}")
-        print(f"   Score: {doc['score']:.3f}")
-        print(f"   Content: {doc['content'][:100]}...")
+    # Le test print doit maintenant utiliser les clés du dictionnaire (context, sources)
+    print(f"\n📄 Result Type: {results['type']}")
+    print(f"   Context (Snippet): {results['context'][:100]}...")
+    print(f"   Sources Found: {len(results['sources'])}")
