@@ -89,12 +89,17 @@ async def query_chatbot(request: QueryRequest):
         logger.info(f"Query: {request.query[:100]}")
         
         start_time = time.time()
-        result = chatbot.query(request.query)
+        
+        # 💥 CRITICAL FIX HERE: Pass both arguments!
+        result = chatbot.query(request.query, request.session_id) 
+        
         elapsed_ms = (time.time() - start_time) * 1000
         
-        # Save to session if provided
+        # Save to session if provided (This block correctly uses request.session_id)
         if request.session_id:
             try:
+                # Assuming ChatStorage has save_message methods
+                # NOTE: Ensure your ChatStorage implements save_message(session_id, role, content, sources=None)
                 storage.save_message(
                     session_id=request.session_id,
                     role="user",
